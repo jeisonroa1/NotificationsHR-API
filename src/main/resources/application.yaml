@@ -1,0 +1,20 @@
+spring:
+  datasource:
+      url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?useSSL=false&serverTimezone=GMT-5&useLegacyDatetimeCode=false
+      username: ${DB_USER}
+      password: ${DB_PASS}
+      testWhileIdle: true
+      validationQuery: SELECT 1
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        id:
+          new_generator_mappings: false
+        jdbc:
+          time_zone: GMT-5
+urlAuthUserMicroService: http://scrum-lb-569116570.us-east-1.elb.amazonaws.com:${AUTH_PORT}/api/v1/users
+urlTicketsMicroService: http://scrum-lb-569116570.us-east-1.elb.amazonaws.com:${TICK_PORT}/api/v1/tickets
